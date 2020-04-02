@@ -18,7 +18,7 @@ class ProductsTableSeeder extends Seeder
          * Books
          */
         Product::create([
-            'imagePath' => 'https://kbimages1-a.akamaihd.net/110743cf-0372-460c-8939-9b7f839ff262/1200/1200/False/harry-potter-and-the-goblet-of-fire-5.jpg',
+            'imagePath' => 'https://s.s-bol.com/imgbase0/imagebase3/large/FC/5/1/0/1/1001004010971015.jpg',
             'title' => 'Harry Potter',
             'description' => 'Was erg leuk om te lezen, vroeger.',
             'price' => 10
