@@ -7,10 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Order_detail::class, function (Faker $faker) {
     return [
-        'order_id' => factory('App\Order')->create()->id,
-        'street' => 'Leerparkpromenade 100',
-        'postalcode' => '3312 KW',
-        'city' => 'Dordrecht',
-        'country' => 'Nederland'
+        //'order_id' => factory('App\Order')->create()->id,
+        'order_id' => 1,
+        'street' => $faker->streetAddress,
+        'postalcode' => $faker->postcode,
+        'city' => $faker->city,
+        'country' => $faker->country
     ];
 });

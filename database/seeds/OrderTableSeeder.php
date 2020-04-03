@@ -15,12 +15,10 @@ class OrderTableSeeder extends Seeder
         Order::truncate();
 
         Order::create([
-            'product_id' => 3,
             'user_id' => 2
         ]);
 
         Order::create([
-            'product_id' => 3,
             'user_id' => 2
         ]);
     }

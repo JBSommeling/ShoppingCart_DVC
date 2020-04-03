@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Role::class, function (Faker $faker) {
     return [
         'name' => 'user',
-        'user_id' => factory('App\User')->create()->id
+        'user_id' => 1
     ];
 });
