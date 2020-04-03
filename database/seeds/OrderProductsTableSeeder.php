@@ -21,6 +21,7 @@ class OrderProductsTableSeeder extends Seeder
             ]);
         }
 
+
         for ($order = 1; $order <=2; $order++) {
             Order_product::create([
                 'order_id' => 2,
