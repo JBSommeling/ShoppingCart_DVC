@@ -8,16 +8,14 @@
             <i class="fas fa-align-left"></i>
         </button>
         <div class="container-fluid">
-            @foreach($products->chunk(3) as $productChunk)
-                <div class="row mb-4">
+            @foreach($products->chunk(5) as $productChunk)
+                <div class="row">
                     @foreach($productChunk as $product)
-                    <div class="col-4" align="center">
-                        <div class="card"  style="width: 18rem;">
-                            <img src="{{ $product['imagePath'] }}" class="card-img-top" alt="...">
+                    <div class=" col-12 col-sm-6 col-lg-4 mb-4" align="center">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ $product['imagePath'] }}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title"> {{ $product['title'] }} </h5>
                             </div>
                         </div>
                     </div>
