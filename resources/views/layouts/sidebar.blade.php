@@ -1,11 +1,11 @@
 <div class="wrapper">
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3 class="text-white">Categorieën</h3>
+            <img src=" {{ asset('img/logo-white.png') }}" alt="logo">
+            <h3 class="text-white">ShoppingCart</h3>
         </div>
 
         <ul class="list-unstyled components">
-            <p class="text-white">Voor de leukste cadeaus</p>
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">

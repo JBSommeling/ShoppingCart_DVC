@@ -10,19 +10,48 @@
     max-width: 250px;
     min-height: 92vh;
     transition: all .3s ease;
-    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url("../img/hero.jpg");
+    background-image: linear-gradient(to bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url("../img/hero.jpg");
 
     & .sidebar-header {
         padding: 20px;
+        & h3 {
+            transform: translateX(10px);
+        }
     }
 
     & ul.components {
         padding: 20px 0;
-        border-bottom: 1px solid #47748b;
+        & p{
+            text-transform: uppercase;
+        }
+        & li {
+            & a {
+                &:link, &:visited{
+                    display: inline-block;
+                    font-size: 1rem;
+                    font-weight: 300;
+
+                    padding: 0 2rem;
+                    color: white;
+                    text-decoration: none;
+                    text-transform: uppercase;
+
+                    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+                    background-size: 250%;
+                    transition: all .4s;
+                }
+
+                &:hover, &:active {
+                    background-position: 90%;
+                    color: black;
+                    transform: translateX(1rem);
+                }
+            }
+        }
     }
 
     &.active {
-        margin-left: 0px;
+        margin-left: 0;
     }
 
     & a[data-toggle="collapse"] {
