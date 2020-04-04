@@ -1,0 +1,39 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    margin-left: -250px;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 92vh;
+    transition: all .3s ease;
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url("../img/hero.jpg");
+
+    & .sidebar-header {
+        padding: 20px;
+    }
+
+    & ul.components {
+        padding: 20px 0;
+        border-bottom: 1px solid #47748b;
+    }
+
+    &.active {
+        margin-left: 0px;
+    }
+
+    & a[data-toggle="collapse"] {
+        position: relative;
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+    }
+}
