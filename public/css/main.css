@@ -1,3 +1,10 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  background-color: #f7f5f7;
+}
+
 .navbar {
   background-image: linear-gradient(to right, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(/images/hero.jpg?6e09f4102b0d64adc38d21bd9c89a9a7);
 }
@@ -6,19 +13,13 @@
   width: 50px;
 }
 
-.wrapper {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-}
-
 #sidebar {
   margin-left: -250px;
   min-width: 250px;
   max-width: 250px;
   min-height: 92vh;
   transition: all 0.3s ease;
-  background-image: linear-gradient(to bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(/images/hero.jpg?6e09f4102b0d64adc38d21bd9c89a9a7);
+  background-image: linear-gradient(to bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8));
 }
 
 #sidebar .sidebar-header {
@@ -72,5 +73,9 @@
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
+}
+
+#content {
+  width: 100vw;
 }
 
