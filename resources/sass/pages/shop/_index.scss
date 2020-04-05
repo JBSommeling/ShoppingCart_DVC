@@ -1,27 +1,36 @@
 #content {
     width: 100vw;
+
+    & .sticky-button {
+        position: sticky;
+        top: 1rem;
+        left: 0;
+        z-index: 999;
+    }
 }
 
 .card {
+    transition: transform 0.5s ease;
     width: 18rem;
     height: 25rem;
 
+    &:hover{
+        transform: scale(1.1);
+    }
+
     &-img-top {
-        //max-height: 125px;
         width: 150px;
     }
 
     &-title {
         height: 3rem;
         overflow: hidden;
-        //white-space: nowrap;
         text-overflow: ellipsis;
     }
 
     &-text {
         height: 4.5rem;
         overflow: hidden;
-        //white-space: nowrap;
         text-overflow: ellipsis;
     }
 }

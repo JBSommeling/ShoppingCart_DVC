@@ -24,10 +24,21 @@
 
 #sidebar .sidebar-header {
   padding: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 #sidebar .sidebar-header h3 {
   transform: translateX(10px);
+}
+
+#sidebar .sidebar-content {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10rem;
+  left: 0;
 }
 
 #sidebar ul.components {
@@ -79,9 +90,22 @@
   width: 100vw;
 }
 
+#content .sticky-button {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
+  left: 0;
+  z-index: 999;
+}
+
 .card {
+  transition: transform 0.5s ease;
   width: 18rem;
   height: 25rem;
+}
+
+.card:hover {
+  transform: scale(1.1);
 }
 
 .card-img-top {

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ProductController@index')->name('product.index');
+Route::get('/product/{filter}', 'ProductController@filter')->name('product.filter');
 
 Auth::routes();
 

@@ -4,10 +4,10 @@
             <h3 class="text-white">ShoppingCart</h3>
         </div>
 
-        <ul class="list-unstyled components">
+        <ul class="sidebar-content list-unstyled components">
             @foreach($categories as $category)
             <li>
-                <a href="#">{{ $category['name'] }}</a>
+                <a id="{{ $category['name'] }}" href="#">{{ $category['name'] }}</a>
             </li>
             @endforeach
         </ul>
