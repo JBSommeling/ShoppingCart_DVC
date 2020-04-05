@@ -13,7 +13,8 @@
                                     <img class="card-img-top product__detail--img-top" src="{{ $product['imagePath'] }}" alt="Card image cap">
                                     <div class="card-body product__detail--body">
                                         <h5 class="card-title product__detail--title"> {{ $product['title'] }} </h5>
-                                        <p class="card-text product__detail--card-text"></p>
+                                        <p class="card-text product__detail--card-text"> {{$product['description']}}</p>
+                                        <h5 class="product__detail--price text-danger"> &euro; {{ $product['price'] }}</p>
                                         <a href="#" class="btn btn-success">In winkelwagen</a>
                                     </div>
                                 </div>

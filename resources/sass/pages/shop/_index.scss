@@ -11,8 +11,8 @@
 
 .product {
     transition: transform 0.5s ease;
-    width: 18rem;
-    height: 25rem;
+    max-width: 18rem;
+    height: 28rem;
 
     &:hover{
         transform: scale(1.1);
