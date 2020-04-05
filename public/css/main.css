@@ -108,17 +108,33 @@
   transform: scale(1.1);
 }
 
-.product-img-top {
+.product--img-top {
   width: 150px;
 }
 
-.product-title {
+.product--title {
   height: 3rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.product-text {
+.product--text {
+  height: 4.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product__detail--img-top {
+  width: 300px;
+}
+
+.product__detail--title {
+  height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product__detail--text {
   height: 4.5rem;
   overflow: hidden;
   text-overflow: ellipsis;

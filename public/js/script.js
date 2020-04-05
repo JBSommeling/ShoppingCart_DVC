@@ -11,11 +11,11 @@ $(document).ready(function () {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         e.preventDefault();
         $.ajax({
-            url: 'product/books' ,
+            url: '/products/books' ,
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/product/books');
+                $("#productContent").load('/products/books');
             },
             error: function (data) {
                 alert('error');
@@ -30,11 +30,11 @@ $(document).ready(function () {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         e.preventDefault();
         $.ajax({
-            url: 'product/movies' ,
+            url: '/products/movies' ,
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/product/movies');
+                $("#productContent").load('/products/movies');
             },
             error: function (data) {
                 alert('error');
@@ -49,11 +49,11 @@ $(document).ready(function () {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         e.preventDefault();
         $.ajax({
-            url: 'product/music' ,
+            url: '/products/music' ,
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/product/music');
+                $("#productContent").load('/products/music');
             },
             error: function (data) {
                 alert('error');
@@ -68,11 +68,11 @@ $(document).ready(function () {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         e.preventDefault();
         $.ajax({
-            url: 'product/games' ,
+            url: '/products/games' ,
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/product/games');
+                $("#productContent").load('/products/games');
             },
             error: function (data) {
                 alert('error');
@@ -87,11 +87,11 @@ $(document).ready(function () {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         e.preventDefault();
         $.ajax({
-            url: 'product/instruments' ,
+            url: '/products/instruments' ,
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/product/instruments');
+                $("#productContent").load('/products/instruments');
             },
             error: function (data) {
                 alert('error');

@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
+    /**
+     * Function to get products filtered by category_id.
+     * @param $cat_id - the category id of the products.
+     * @return \Illuminate\Support\Collection
+     */
     public function getProducts($cat_id) {
         $products = DB::table('products')
             ->join('product_categories', 'product_categories.product_id', '=', 'products.id')

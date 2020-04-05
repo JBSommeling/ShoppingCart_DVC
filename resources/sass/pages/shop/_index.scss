@@ -18,17 +18,17 @@
         transform: scale(1.1);
     }
 
-    &-img-top {
+    &--img-top {
         width: 150px;
     }
 
-    &-title {
+    &--title {
         height: 3rem;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
-    &-text {
+    &--text {
         height: 4.5rem;
         overflow: hidden;
         text-overflow: ellipsis;

@@ -18,11 +18,21 @@ class ProductController extends Controller
     }
 
     /**
-     * Function to view filtered products by category
+     * Function to view product details.
+     * @param $product_id - the parameter given when clicking on product to show more details.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($product_id){
+        $product = Product::find($product_id);
+        $categories = Category::all();
+        return view('shop.product', compact('categories', 'product'));
+    }
+
+    /**
+     * Function to view filtered products by category.
      * @param $filter - the parameter given when clicking on category on product index page.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function filter($filter) {
         $product = new Product();
         if ($filter == 'books') {
