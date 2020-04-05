@@ -98,27 +98,27 @@
   z-index: 999;
 }
 
-.card {
+.product {
   transition: transform 0.5s ease;
   width: 18rem;
   height: 25rem;
 }
 
-.card:hover {
+.product:hover {
   transform: scale(1.1);
 }
 
-.card-img-top {
+.product-img-top {
   width: 150px;
 }
 
-.card-title {
+.product-title {
   height: 3rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.card-text {
+.product-text {
   height: 4.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
