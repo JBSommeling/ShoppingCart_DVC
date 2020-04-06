@@ -23,7 +23,7 @@ $(document).ready(function () {
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/products/books');
+                $("#productContent").html(data);
             },
             error: function (data) {
                 alert('error');
@@ -42,7 +42,7 @@ $(document).ready(function () {
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/products/movies');
+                $("#productContent").html(data);
             },
             error: function (data) {
                 alert('error');
@@ -61,7 +61,7 @@ $(document).ready(function () {
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/products/music');
+                $("#productContent").html(data);
             },
             error: function (data) {
                 alert('error');
@@ -80,7 +80,7 @@ $(document).ready(function () {
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/products/games');
+                $("#productContent").html(data);
             },
             error: function (data) {
                 alert('error');
@@ -99,7 +99,7 @@ $(document).ready(function () {
             data:{_token: CSRF_TOKEN},
             type:'GET',
             success: function(data){
-                $("#productContent").load('/products/instruments');
+                $("#productContent").html(data);
             },
             error: function (data) {
                 alert('error');
