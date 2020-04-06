@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="wrapper">
-        @include('layouts.sidebar')
+        @include('components.sidebar')
         <div id="content">
             <button type="button" id="sidebarCollapse" class="sticky-button btn btn-success mt-4 ml-4">
                 <i class="fas fa-align-left"></i>
             </button>
+            @include('components.searchbar')
             <div class="container-fluid" id="productContent">
                             <div class=" col-6 offset-3" align="center">
                                 <div class="card product__detail">

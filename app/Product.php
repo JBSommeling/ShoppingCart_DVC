@@ -21,7 +21,7 @@ class Product extends Model
     }
 
     public function searchProducts($filter) {
-        $search = $filter.'%';
+        $search = '%'.$filter.'%';
         $products = DB::table('products')
             ->where('title', 'like', $search)
             ->get();
