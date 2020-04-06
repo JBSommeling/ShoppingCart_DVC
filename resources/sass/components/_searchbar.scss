@@ -1,0 +1,25 @@
+.search {
+    &__form {
+        position: sticky;
+        top: 3.4rem;
+        left: 0rem;
+        z-index: 100;
+        transform: translateX(7rem);
+    }
+    &__bar {
+        margin-left: -750px;
+        transition: margin-left 0.5s ease-in-out;
+        transform: translateY(-2.4rem);
+        filter: blur(10px);
+
+        &.active {
+            margin-left: 2.5rem;
+            filter: blur(0);
+
+
+            &.extended {
+                margin-left: 2.6rem;
+            }
+        }
+    }
+}

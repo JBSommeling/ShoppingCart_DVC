@@ -1,7 +1,15 @@
 $(document).ready(function () {
-
+    /**
+     * Function to toggle sidebar from left.
+     */
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
+        $('#search').toggleClass('extended');
+
+    });
+
+    $('#searchCollapse').on('click', function () {
+        $('#search').toggleClass('active');
     });
 
     /**

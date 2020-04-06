@@ -14,6 +14,7 @@
 }
 
 #sidebar {
+  z-index: 200;
   margin-left: -250px;
   min-width: 250px;
   max-width: 250px;
@@ -84,6 +85,33 @@
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
+}
+
+.search__form {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 3.4rem;
+  left: 0rem;
+  z-index: 100;
+  transform: translateX(7rem);
+}
+
+.search__bar {
+  margin-left: -750px;
+  transition: margin-left 0.5s ease-in-out;
+  transform: translateY(-2.4rem);
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+}
+
+.search__bar.active {
+  margin-left: 2.5rem;
+  -webkit-filter: blur(0);
+          filter: blur(0);
+}
+
+.search__bar.active.extended {
+  margin-left: 2.6rem;
 }
 
 #content {
