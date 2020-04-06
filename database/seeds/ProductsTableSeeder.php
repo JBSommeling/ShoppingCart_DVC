@@ -73,7 +73,7 @@ class ProductsTableSeeder extends Seeder
         ]);
 
         Product::create([
-            'imagePath' => 'https://s.s-bol.com/imgbase0/imagebase3/large/FC/3/2/7/3/9200000125593723.jpg',
+            'imagePath' => 'https://s.s-bol.com/imgbase0/imagebase3/large/FC/1/2/0/1/9200000118461021.jpg',
             'title' => 'Shetland - Seizoen 4',
             'description' => 'LET OP!: In vergelijking met Engeland hebben de seizoenen in Nederland een andere volgorde. De telling bij de Pilot: Pilot = Serie 1 Serie 1 = Serie 2 Serie 2 = Serie 3 Serie 3 = Serie 4',
             'price' => 20

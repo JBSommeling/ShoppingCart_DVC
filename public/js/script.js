@@ -106,4 +106,21 @@ $(document).ready(function () {
             }
         });
     });
+
+    /**
+     * Function to search products by name
+     */
+    $("#search").keyup(function(e){
+        var search = $('#search').val();
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        e.preventDefault();
+        $.ajax({
+            url: '/products/'+search,
+            data:{_token: CSRF_TOKEN},
+            type:'GET',
+            success: function(data){
+                $("#productContent").html(data);
+            },
+        });
+    });
 });

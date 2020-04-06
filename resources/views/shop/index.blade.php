@@ -8,7 +8,7 @@
             <i class="fas fa-align-left"></i>
         </button>
 
-        <button type="button" id="searchCollapse" class="float-left sticky-button btn btn-success mt-4 ml-4">
+        <button type="button" id="searchCollapse" class="sticky-button btn btn-success mt-4 ml-4">
             <i class="fas fa-search"></i>
         </button>
         <form action="" method="GET" class="search__form">

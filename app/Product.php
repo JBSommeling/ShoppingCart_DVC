@@ -19,4 +19,12 @@ class Product extends Model
             ->get();
         return $products;
     }
+
+    public function searchProducts($filter) {
+        $search = $filter.'%';
+        $products = DB::table('products')
+            ->where('title', 'like', $search)
+            ->get();
+        return $products;
+    }
 }
