@@ -30,7 +30,7 @@ class ProductController extends Controller
 
     /**
      * Function to view filtered products by category.
-     * @param $filter - the parameter given when clicking on category or name on product index page.
+     * @param $filter - the parameter given when clicking on category or searching by name on product index page.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function filter($filter) {
