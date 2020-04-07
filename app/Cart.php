@@ -43,6 +43,12 @@ class Cart
         $this->totalPrice += $storedItem['price'];
     }
 
+    /**
+     * Function to change amount of items per product.
+     * @param $product - the product of the amount that needs to be edited.
+     * @param $product_id - the id of the product of the amount that needs to be edited.
+     * @param $newAmount - the new amount of the product that needs to be edited.
+     */
     public function editAmount($product, $product_id, $newAmount){
         $storedItem = $this->items[$product_id];
 
