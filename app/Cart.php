@@ -23,7 +23,7 @@ class Cart
      * @param $product - product to be sent into cart.
      * @param $id - id of product to be sent into cart.
      */
-    public function add($product, $id) {
+    public function add($product, $id, $amount) {
         $storedItem = ['qty' => 0, 'price' => $product->price, 'product' => $product];
         //To check if items are present in Cart and something else than null.
         if ($this->items) {
@@ -34,10 +34,10 @@ class Cart
             }
         }
 
-        $storedItem['qty']++;
+        $storedItem['qty'] += $amount;
         $storedItem['price'] = $product->price * $storedItem['qty'];
         $this->items[$id] = $storedItem;
-        $this->totalQty++;
+        $this->totalQty += $amount;
         $this->totalPrice += $product['price'];
     }
 }

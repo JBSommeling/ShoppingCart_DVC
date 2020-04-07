@@ -7,9 +7,16 @@
                     <div class="card-body product-body">
                         <p class="badge badge-success"> &euro; {{ $product->price }}</p>
                         <h5 class="card-title product--title"> {{ $product->title }} </h5>
-                        <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-success">In winkelwagen</a>
-                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-secondary">Meer</a>
-                    </div>
+                        <form action="{{ route('product.addToCart') }}" method="POST">
+                            <div class="form-group">
+                                @csrf
+                                <input type="hidden" value="{{ $product->id }}" name="product_id" id="product_id">
+                                <input type="hidden" name="amount" min="0" value="1" id="amount" class="form-control w-25 d-inline-block">
+                                <input type="submit" class="btn btn-success ml-4" id="toCartBtn" value="In winkelwagen.">
+                                <a href="{{ route('product.show', $product->id) }}" class="btn btn-secondary">Meer</a>
+                            </div>
+                        </form>
+                </div>
                 </div>
             </div>
         @endforeach

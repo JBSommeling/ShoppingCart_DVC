@@ -169,3 +169,7 @@
   text-overflow: ellipsis;
 }
 
+.product__detail--toCartBtn {
+  margin-bottom: 5px;
+}
+

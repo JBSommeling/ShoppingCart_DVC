@@ -66,14 +66,15 @@ class ProductController extends Controller
 
     /**
      * Function to add product to cart.
-     * @param $id - id of product to be sent to cart.
+     * @param Request $request - contains post information from form.
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addToCart($id){
-        $product = Product::find($id);
+
+    public function addToCart(Request $request){
+        $product = Product::find($request->product_id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product, $product->id);
+        $cart->add($product, $product->id, $request->amount);
 
         Session::put('cart', $cart);
         return redirect()->route('product.index');

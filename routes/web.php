@@ -20,7 +20,7 @@ Route::name('product.')->group(function(){
 
     Route::prefix('product')->group(function (){
         Route::get('/{id}', 'ProductController@show')->name('show');
-        Route::get('/addToCart/{id}', 'ProductController@addToCart')->name('addToCart');
+        Route::post('/addToCart', 'ProductController@addToCart')->name('addToCart');
     });
 });
 
