@@ -8,6 +8,9 @@ $(document).ready(function () {
 
     });
 
+    /**
+     * Function to toggle search bar from left.
+     */
     $('#searchCollapse').on('click', function () {
         $('#search').toggleClass('active');
     });

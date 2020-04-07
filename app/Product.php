@@ -20,6 +20,11 @@ class Product extends Model
         return $products;
     }
 
+    /**
+     * Function to search products by name
+     * @param $filter - the name entered in search bar.
+     * @return \Illuminate\Support\Collection
+     */
     public function searchProducts($filter) {
         $search = '%'.$filter.'%';
         $products = DB::table('products')
