@@ -1,0 +1,12 @@
+.cart {
+    &--price {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    &__form {
+        &--changeAmountBtn {
+            margin-bottom: 5px;
+        }
+    }
+}

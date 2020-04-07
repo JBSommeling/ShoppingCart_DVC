@@ -18,6 +18,12 @@ Route::name('product.')->group(function(){
     Route::get('/', 'ProductController@index')->name('index');
     Route::get('/products/{filter}', 'ProductController@filter')->name('filter');
 
+    Route::prefix('cart')->group(function(){
+        Route::get('/', 'ProductController@showCart')->name('cart');
+        Route::post('/editCart', 'ProductController@editCart')->name('cart.edit');
+    });
+
+
     Route::prefix('product')->group(function (){
         Route::get('/{id}', 'ProductController@show')->name('show');
         Route::post('/addToCart', 'ProductController@addToCart')->name('addToCart');

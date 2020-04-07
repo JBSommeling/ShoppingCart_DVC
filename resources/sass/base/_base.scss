@@ -1,6 +1,9 @@
+body {
+    background-color: $color-background;
+}
+
 .wrapper {
     display: flex;
     width: 100%;
     align-items: stretch;
-    background-color: $color-background;
 }

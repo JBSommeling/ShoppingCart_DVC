@@ -45,7 +45,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">
+                            <a class="nav-link text-white" href=" {{ route('product.cart') }}">
                                 <i class="fas fa-shopping-cart"></i> Winkelwagen
                                 <span class="badge badge-success">{{ Session::has('cart') ? Session::get('cart')->totalQty : 0 }}</span>
                             </a>
