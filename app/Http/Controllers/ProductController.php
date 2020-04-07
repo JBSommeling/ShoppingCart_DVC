@@ -35,28 +35,28 @@ class ProductController extends Controller
      */
     public function filter($filter) {
         $product = new Product();
-        if ($filter == 'books') {
-            $products = $product->getProducts(1);
-        }
 
-        else if ($filter == 'movies') {
-            $products = $product->getProducts(2);
-        }
-
-        else if ($filter == 'music') {
-            $products = $product->getProducts(3);
-        }
-
-        else if ($filter == 'games') {
-            $products = $product->getProducts(4);
-        }
-
-        else if ($filter == 'instruments') {
-            $products = $product->getProducts(5);
-        }
-
-        else {
-            $products = $product->searchProducts($filter);
+        switch ($filter) {
+            case 'books':
+                $products = $product->getProducts(1);
+                break;
+            case 'movies':
+                $products = $product->getProducts(2);
+                break;
+            case 'music':
+                $products = $product->getProducts(3);
+                break;
+            case 'games':
+                $products = $product->getProducts(4);
+                break;
+            case 'instruments':
+                $products = $product->getProducts(5);
+                break;
+            case 'all':
+                $products = Product::all();
+                break;
+            default:
+                $products = $product->searchProducts($filter);
         }
 
         return view('shop.filter', compact('products'));

@@ -121,6 +121,19 @@ $(document).ready(function () {
             success: function(data){
                 $("#productContent").html(data);
             },
+            error: function (data) {
+                $.ajax({
+                    url: '/products/all' ,
+                    data:{_token: CSRF_TOKEN},
+                    type:'GET',
+                    success: function(data){
+                        $("#productContent").html(data);
+                    },
+                    error: function (data) {
+                        alert('error');
+                    }
+                });
+            }
         });
     });
 });
