@@ -15,8 +15,8 @@
                                     <div class="card-body product__detail--body">
                                         <h5 class="card-title product__detail--title"> {{ $product['title'] }} </h5>
                                         <p class="card-text product__detail--card-text"> {{$product['description']}}</p>
-                                        <h5 class="product__detail--price text-danger"> &euro; {{ $product['price'] }}</p>
-                                        <a href="#" class="btn btn-success">In winkelwagen</a>
+                                        <h5 class="product__detail--price text-danger"> &euro; {{ $product['price'] }}</h5>
+                                        <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-success">In winkelwagen</a>
                                     </div>
                                 </div>
                             </div>

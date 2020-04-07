@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -60,6 +62,21 @@ class ProductController extends Controller
         }
 
         return view('shop.filter', compact('products'));
+    }
+
+    /**
+     * Function to add product to cart.
+     * @param $id - id of product to be sent to cart.
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addToCart($id){
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->id);
+
+        Session::put('cart', $cart);
+        return redirect()->route('product.index');
     }
 
 }

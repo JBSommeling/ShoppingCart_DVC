@@ -20,7 +20,7 @@
                             <div class="card-body product--body">
                                 <p class="badge badge-success"> &euro; {{ $product->price }}</p>
                                 <h5 class="card-title product--title"> {{ $product['title'] }} </h5>
-                                <a href="#" class="btn btn-success">In winkelwagen</a>
+                                <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-success">In winkelwagen</a>
                                 <a href="{{ route('product.show', $product->id) }}" class="btn btn-secondary">Meer</a>
                             </div>
                         </div>

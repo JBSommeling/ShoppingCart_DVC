@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('product.')->group(function(){
     Route::get('/', 'ProductController@index')->name('index');
-    Route::get('/product/{id}', 'ProductController@show')->name('show');
     Route::get('/products/{filter}', 'ProductController@filter')->name('filter');
+
+    Route::prefix('product')->group(function (){
+        Route::get('/{id}', 'ProductController@show')->name('show');
+        Route::get('/addToCart/{id}', 'ProductController@addToCart')->name('addToCart');
+    });
 });
 
 Auth::routes();

@@ -46,8 +46,8 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="fas fa-shopping-cart text-white"></i> Shopping Cart
-                                <span class="badge badge-success">0</span>
+                                <i class="fas fa-shopping-cart text-white"></i> Winkelwagen
+                                <span class="badge badge-success">{{ Session::has('cart') ? Session::get('cart')->totalQty : 0 }}</span>
                             </a>
                         </li>
 
