@@ -12,7 +12,9 @@
                                 @csrf
                                 <input type="hidden" value="{{ $product->id }}" name="product_id" id="product_id">
                                 <input type="hidden" name="amount" min="0" value="1" id="amount" class="form-control w-25 d-inline-block">
-                                <input type="submit" class="btn btn-success ml-4" id="toCartBtn" value="In winkelwagen.">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" id="toCartBtn" value="In winkelwagen.">
                                 <a href="{{ route('product.show', $product->id) }}" class="btn btn-secondary">Meer</a>
                             </div>
                         </form>
