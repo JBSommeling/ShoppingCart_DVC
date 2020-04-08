@@ -21,10 +21,9 @@
                                                 @csrf
                                                 <input type="hidden" value="{{ $product->id }}" name="product_id" id="product_id">
                                                 <input type="number" name="amount" min="0" value="1" id="amount" class="form-control w-25 d-inline-block">
-                                                <input type="submit" class="btn btn-success ml-4 product__detail--toCartBtn" id="toCartBtn" value="In winkelwagen.">
+                                                <input type="submit" class="btn btn-success ml-4 product__detail--toCartBtn" id="toCartBtn" value="In winkelwagen">
                                             </div>
                                         </form>
-{{--                                        <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-success">In winkelwagen</a>--}}
                                     </div>
                                 </div>
                             </div>
