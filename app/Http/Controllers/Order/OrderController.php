@@ -7,6 +7,7 @@ use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -16,16 +17,32 @@ class OrderController extends Controller
      */
 
     public function create(){
+        $fields = [
+            'name' => 'Naam',
+            'street' => 'Straat',
+            'postalcode' => 'Postcode',
+            'city' => 'Woonplaats',
+            'country' => 'Land',
+            'card-name' => 'Naamhouder van kaart',
+            'card-number' => 'Kaartnummer',
+            'card-expiry-month' => 'Maand',
+            'card-expiry-year' => 'Jaar',
+            'card-cvc' => 'CVC'
+        ];
+
         $user = Auth::user();
         $total = Session::get('cart')->totalPrice;
-        return view('shop.checkout', compact('user', 'total'));
+        return view('shop.checkout', compact('user', 'total', 'fields'));
     }
 
+    /**
+     * Method to store given values to database, if validated
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
 
     public function store(Request $request){
-
-
-        $validatedData = $request->validate([
+        $validatedData = Validator::make($request->all(),[
            'name' => 'required',
            'street' => 'required',
             'postalcode' => 'required|max:6',
@@ -46,11 +63,12 @@ class OrderController extends Controller
             ]
         );
 
-
-
-        if ($validatedData) {
+        if ($validatedData->fails()){
+            $errormessages = $validatedData->messages()->get('*');
+            return redirect()->back()->withInput()->withErrors($errormessages);
+        }
+        else{
             $order = new Order();
-            dd(Auth::user()->id);
             $order->store(Auth::user()->id);
         }
     }
