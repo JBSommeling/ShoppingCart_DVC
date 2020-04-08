@@ -181,6 +181,10 @@ body {
   margin-top: 1rem;
 }
 
+.cart--remove {
+  margin-top: 0.5rem;
+}
+
 .cart__form--changeAmountBtn {
   margin-bottom: 5px;
 }

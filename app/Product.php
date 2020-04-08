@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Product extends Model
 {
     /**
-     * Function to get products filtered by category_id.
+     * Method to get products filtered by category_id.
      * @param $cat_id - the category id of the products.
      * @return \Illuminate\Support\Collection
      */
@@ -21,7 +21,7 @@ class Product extends Model
     }
 
     /**
-     * Function to search products by name
+     * Method to search products by name
      * @param $filter - the name entered in search bar.
      * @return \Illuminate\Support\Collection
      */

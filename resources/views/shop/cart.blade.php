@@ -16,7 +16,14 @@
                                                     <span class="badge badge-secondary"> {{ $product['qty'] }} </span>
                                                     <strong> {{ $product['product']['title'] }} </strong>
                                                 </button>
+                                                <form action="{{ route('product.cart.edit') }}" method="POST" class="d-inline-block float-right">
+                                                    @csrf
+                                                    <input type="hidden" name="amount" id="amount" value="0">
+                                                    <input type="hidden" name="product_id" id="product_id" value="{{$key}}">
+                                                    <input type="submit" class="btn btn-danger d-inline-block ml-4 cart--remove" value="&times;">
+                                                </form>
                                                 <p class="cart--price d-inline-block float-right"><i>Prijs: </i><span class="badge badge-success"> {{ $product['price'] }}</span></p>
+
                                             </h2>
                                         </div>
 

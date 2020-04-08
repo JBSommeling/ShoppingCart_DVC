@@ -19,7 +19,7 @@ class Cart
     }
 
     /**
-     * Function to add products in cart and keep track on qty, price and total products in cart
+     * Method to add products in cart and keep track on qty, price and total products in cart
      * @param $product - product to be sent into cart.
      * @param $product_id - id of product to be sent into cart.
      */
@@ -44,7 +44,7 @@ class Cart
     }
 
     /**
-     * Function to change amount of items per product.
+     * Method to change amount of items per product.
      * @param $product - the product of the amount that needs to be edited.
      * @param $product_id - the id of the product of the amount that needs to be edited.
      * @param $newAmount - the new amount of the product that needs to be edited.

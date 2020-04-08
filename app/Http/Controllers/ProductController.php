@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 class ProductController extends Controller
 {
     /**
-     * Function to view product index
+     * Method to view product index
      */
     public function index(){
         $categories = Category::all();
@@ -20,7 +20,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Function to view product details.
+     * Method to view product details.
      * @param $product_id - the parameter given when clicking on product to show more details.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -31,7 +31,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Function to view filtered products by category.
+     * Method to view filtered products by category.
      * @param $filter - the parameter given when clicking on category or searching by name on product index page.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -65,7 +65,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Function to add product to cart.
+     * Method to add product to cart.
      * @param Request $request - contains post information from form.
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -80,6 +80,11 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
+    /**
+     * Method to show shopping cart.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
     public function showCart(){
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
@@ -90,6 +95,11 @@ class ProductController extends Controller
         return view('shop.cart', compact('products', 'totalPrice', 'productNr'));
     }
 
+    /**
+     * Method to edit products in cart.
+     * @param Request $request - contains post information from form.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function editCart(Request $request){
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
