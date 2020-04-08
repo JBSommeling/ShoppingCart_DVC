@@ -56,7 +56,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="card-name">Naam van kaarthouder</label>
-                        <input type="text" id="card-name" class="form-control @error('card-name') is-invalid @enderror">
+                        <input type="text" id="card-name" name="card-name" class="form-control @error('card-name') is-invalid @enderror">
                     </div>
                     @error('card-name')
                     <div id="errorMessageBox" class="alert alert-danger mt-4">{{ $errors->first('card-name') }}</div>
@@ -65,7 +65,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="card-number">Credit Card nummer</label>
-                        <input type="text" id="card-number" class="form-control @error('card-number') is-invalid @enderror">
+                        <input type="text" id="card-number" name="card-number" class="form-control @error('card-number') is-invalid @enderror">
                     </div>
                     @error('card-number')
                     <div id="errorMessageBox" class="alert alert-danger mt-4">{{ $errors->first('card-number') }}</div>
@@ -76,7 +76,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="card-expiry-month">Verloopmaand</label>
-                                <input type="text" id="card-expiry-month" class="form-control @error('card-expiry-month') is-invalid @enderror">
+                                <input type="text" id="card-expiry-month" name="card-expiry-month" class="form-control @error('card-expiry-month') is-invalid @enderror">
                             </div>
                             @error('card-expiry-month')
                             <div id="errorMessageBox" class="alert alert-danger mt-4">{{ $errors->first('card-expiry-month') }}</div>
@@ -85,7 +85,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="card-expiry-year">Verloopjaar</label>
-                                <input type="number" value="2000" min="2000" max="2030" id="card-expiry-year" class="form-control @error('card-expiry-year') is-invalid @enderror">
+                                <input type="number" value="2000" min="2000" max="2030" name="card-expiry-year" id="card-expiry-year" class="form-control @error('card-expiry-year') is-invalid @enderror">
                             </div>
                             @error('card-expiry-year')
                             <div id="errorMessageBox" class="alert alert-danger mt-4">{{ $errors->first('card-expiry-year') }}</div>
@@ -96,7 +96,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="card-cvc">CVC</label>
-                        <input type="text" id="card-cvc" class="form-control @error('card-cvc') is-invalid @enderror">
+                        <input type="text" id="card-cvc" name="card-cvc" class="form-control @error('card-cvc') is-invalid @enderror">
                     </div>
                     @error('card-cvc')
                     <div id="errorMessageBox" class="alert alert-danger mt-4">{{ $errors->first('card-cvc') }}</div>
