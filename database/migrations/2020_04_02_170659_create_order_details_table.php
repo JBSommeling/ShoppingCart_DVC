@@ -20,6 +20,7 @@ class CreateOrderDetailsTable extends Migration
             $table->string('postalcode');
             $table->string('city');
             $table->string('country');
+            $table->boolean('payment');
             $table->timestamps();
         });
     }

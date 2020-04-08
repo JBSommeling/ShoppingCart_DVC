@@ -54,7 +54,7 @@
             <hr class="col-6">
             <div class="row">
                 <div class="col-6 offset-3">
-                    <a href="#" type="button" class="btn btn-success">Checkout</a>
+                    <a href="{{ route('product.cart.checkout') }}" type="button" class="btn btn-success">Betalen</a>
                 </div>
             </div>
         @else

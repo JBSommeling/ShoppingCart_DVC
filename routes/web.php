@@ -21,6 +21,10 @@ Route::name('product.')->group(function(){
     Route::prefix('cart')->group(function(){
         Route::get('/', 'ProductController@showCart')->name('cart');
         Route::post('/editCart', 'ProductController@editCart')->name('cart.edit');
+        Route::namespace('Order')->middleware('auth')->group(function(){
+            Route::get('/checkout', 'OrderController@create')->name('cart.checkout');
+            Route::post('/pay', 'OrderController@store')->name('cart.pay');
+        });
     });
 
 

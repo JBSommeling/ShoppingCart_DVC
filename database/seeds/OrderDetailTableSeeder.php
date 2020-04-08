@@ -19,7 +19,8 @@ class OrderDetailTableSeeder extends Seeder
             'street' => 'Leerparkpromenade 100',
             'postalcode' => '3312 KW',
             'city' => 'Dordrecht',
-            'country' => 'Netherlands'
+            'country' => 'Netherlands',
+            'payment' => true
         ]);
 
         Order_detail::create([
@@ -27,7 +28,8 @@ class OrderDetailTableSeeder extends Seeder
             'street' => 'Leerparkpromenade 100',
             'postalcode' => '3312 KW',
             'city' => 'Dordrecht',
-            'country' => 'Netherlands'
+            'country' => 'Netherlands',
+            'payment' => false
         ]);
     }
 }

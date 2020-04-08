@@ -12,6 +12,7 @@ $factory->define(Order_detail::class, function (Faker $faker) {
         'street' => $faker->streetAddress,
         'postalcode' => $faker->postcode,
         'city' => $faker->city,
-        'country' => $faker->country
+        'country' => $faker->country,
+        'payment' => false
     ];
 });
