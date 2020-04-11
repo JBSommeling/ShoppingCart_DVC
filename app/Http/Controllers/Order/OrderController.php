@@ -37,7 +37,7 @@ class OrderController extends Controller
 
     /**
      * Method to store given values to database, if validated
-     * @param Request $request
+     * @param Request $request  - contains post information from form.
      * @return \Illuminate\Http\RedirectResponse
      */
 

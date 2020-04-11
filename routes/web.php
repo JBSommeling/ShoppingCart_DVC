@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::namespace('Admin')->prefix('admin')->middleware('can:isAdmin')->name('admin.')->group(function (){
+
+    Route::namespace('User')->prefix('user')->name('user.')->group(function (){
+        Route::get('/', 'UserController@index')->name('index');
+        Route::post('/role', 'UserController@storeRole')->name('role');
+    });
+});
 
 Route::name('product.')->group(function(){
     Route::get('/', 'ProductController@index')->name('index');
