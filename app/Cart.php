@@ -40,7 +40,7 @@ class Cart
         //To overwrite old values in items array
         $this->items[$product_id] = $storedItem;
         $this->totalQty += $amount;
-        $this->totalPrice += $storedItem['price'];
+        $this->totalPrice += $product['price'];
     }
 
     /**
