@@ -17,7 +17,9 @@ class OrderProductsTableSeeder extends Seeder
         for ($order = 1; $order <=2; $order++) {
             Order_product::create([
                 'order_id' => 1,
-                'product_id' => 2
+                'product_id' => 2,
+                'qty' => 1,
+                'price' => 12
             ]);
         }
 
@@ -25,7 +27,9 @@ class OrderProductsTableSeeder extends Seeder
         for ($order = 1; $order <=2; $order++) {
             Order_product::create([
                 'order_id' => 2,
-                'product_id' => 2
+                'product_id' => 2,
+                'qty' => 2,
+                'price' => 15
             ]);
         }
     }

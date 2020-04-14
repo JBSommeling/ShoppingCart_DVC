@@ -15,11 +15,12 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('order_id')->nullable();
+            $table->bigInteger('order_id');
             $table->string('street');
             $table->string('postalcode');
             $table->string('city');
             $table->string('country');
+            $table->integer('totalPrice');
             $table->boolean('payment');
             $table->timestamps();
         });

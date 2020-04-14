@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Order_detail;
+use App\Order_product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -69,7 +71,41 @@ class OrderController extends Controller
         }
         else{
             $order = new Order();
-            $order->store(Auth::user()->id);
+            $order->user_id = Auth::user()->id;
+            $order->save();
+
+            $latestOrder = Order::find($order->id);
+            $cart = Session::get('cart');
+            $items = $cart->items;
+            $products_id = array_keys($items);
+
+            foreach ($products_id as $product) {
+                $order_product = array(
+                    new Order_product(array(
+                        'order_id' => $order->id,
+                        'product_id' => $product,
+                        'qty' => $items[$product]['qty'],
+                        'price' => $items[$product]['price']
+                    )),
+                );
+                $latestOrder->order_product()->saveMany($order_product);
+            }
+
+            $order_detail = array(
+                new Order_detail(array(
+                    'order_id' => $order->id,
+                    'street' => $request->street,
+                    'postalcode' => $request->postalcode,
+                    'city' => $request->city,
+                    'country' => $request->country,
+                    'totalPrice' => $cart->totalPrice,
+                    'payment' => false
+                ))
+            );
+            $latestOrder->order_detail()->saveMany($order_detail);
+
+            Session::remove('cart');
+            return redirect()->route('product.index');
         }
     }
 }

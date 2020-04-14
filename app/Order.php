@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public function store($user_id){
-
-    }
+    // To allow mass assignment.
+    protected $fillable = ['order_id'];
 
     /**
      * Method to define relationship between order and users table.

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Role;
 use App\Order_detail;
 
 class DatabaseSeeder extends Seeder

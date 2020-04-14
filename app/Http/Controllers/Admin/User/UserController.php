@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -60,10 +61,12 @@ class UserController extends Controller
 
         // To delete every record in related tables.
         foreach ($user->orders as $order){
-            $order->first()->order_detail()->delete();
-            $order->first()->order_product()->delete();
+            $user->orders()->first()->order_detail()->delete();
+            $user->orders()->first()->order_product()->delete();
             $user->orders()->first()->delete();
         }
+
+        Session::remove('cart');
         $user->delete();
         return redirect()->route('admin.user.index');
     }
