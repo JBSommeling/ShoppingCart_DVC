@@ -66,7 +66,7 @@ class UserController extends Controller
             $user->orders()->first()->delete();
         }
 
-        Session::remove('cart');
+        Session::forget('cart');
         $user->delete();
         return redirect()->route('admin.user.index');
     }

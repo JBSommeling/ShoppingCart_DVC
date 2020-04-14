@@ -93,6 +93,7 @@ class ProductController extends Controller
         $productNr = 1;
         $products = $cart->items;
         $totalPrice = $cart->totalPrice;
+
         return view('shop.cart', compact('products', 'totalPrice', 'productNr'));
     }
 

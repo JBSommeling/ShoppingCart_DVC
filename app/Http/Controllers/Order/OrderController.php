@@ -104,7 +104,7 @@ class OrderController extends Controller
             );
             $latestOrder->order_detail()->saveMany($order_detail);
 
-            Session::remove('cart');
+            Session::forget('cart');
             return redirect()->route('product.index');
         }
     }
