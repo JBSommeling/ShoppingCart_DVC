@@ -49,4 +49,12 @@ class User extends Authenticatable
             ->where('id', $user_id)
             ->update(array('role' => $role));
     }
+
+    /**
+     * Method to define relationship between users and orders table.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(){
+        return $this->hasMany('App\Order');
+    }
 }

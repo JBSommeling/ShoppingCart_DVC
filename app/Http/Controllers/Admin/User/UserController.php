@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,5 +47,24 @@ class UserController extends Controller
             $user->editRole($request->user_id, $request->roles);
             return redirect()->route('admin.user.index');
         }
+    }
+
+
+    /**
+     * Method to delete user and all its records in order, order_detail and order_product tables.
+     * @param $user_id - the id of the user to be deleted.
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($user_id){
+        $user = User::find($user_id);
+
+        // To delete every record in related tables.
+        foreach ($user->orders as $order){
+            $order->first()->order_detail()->delete();
+            $order->first()->order_product()->delete();
+            $user->orders()->first()->delete();
+        }
+        $user->delete();
+        return redirect()->route('admin.user.index');
     }
 }

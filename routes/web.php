@@ -18,6 +18,7 @@ Route::namespace('Admin')->prefix('admin')->middleware('can:isAdmin')->name('adm
     Route::namespace('User')->prefix('user')->name('user.')->group(function (){
         Route::get('/', 'UserController@index')->name('index');
         Route::post('/role', 'UserController@storeRole')->name('role');
+        Route::delete('/{user_id}', 'UserController@destroy')->name('delete');
     });
 });
 
