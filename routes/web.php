@@ -40,13 +40,13 @@ Route::name('product.')->group(function(){
         });
     });
     Route::prefix('product')->group(function (){
-        Route::get('/{id}', 'ProductController@show')->name('show');
+        Route::get('/{product_id}', 'ProductController@show')->name('show');
         Route::post('/addToCart', 'ProductController@addToCart')->name('addToCart');
     });
 });
 
 Route::namespace('Order')->prefix('order')->name('order.')->middleware('auth')->group(function (){
-    Route::get('/', 'OrderController@show')->name('index');
+    Route::get('/', 'OrderController@show')->name('show');
 });
 
 

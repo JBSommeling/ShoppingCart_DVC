@@ -71,7 +71,7 @@
                                     @can('isAdmin')
                                         <a class="dropdown-item" href="{{ route('admin.user.index') }}">Gebruikers</a>
                                     @endcan
-                                    <a href="{{ route('order.index') }}" class="dropdown-item">Bestellingen</a>
+                                    <a href="{{ route('order.show') }}" class="dropdown-item">Mijn bestellingen</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

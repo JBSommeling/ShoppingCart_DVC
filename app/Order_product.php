@@ -9,4 +9,7 @@ class Order_product extends Model
     // To allow mass assignment.
     protected $fillable = ['order_id', 'product_id', 'qty', 'price'];
 
+    public function product(){
+        return $this->belongsTo('App\Product');
+    }
 }

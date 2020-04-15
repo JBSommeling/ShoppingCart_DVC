@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\Order_detail;
 use App\Order_product;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -13,8 +14,21 @@ use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
-    public function index(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
+    /**
+     * Method to render all the orders placed by user.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function show(){
+        $user = Auth::user();
+        $orders = $user->orders;
+
+        return view('user.order.show', compact('orders'));
     }
 
     /**
@@ -78,35 +92,32 @@ class OrderController extends Controller
             $order->user_id = Auth::user()->id;
             $order->save();
 
-            $latestOrder = Order::find($order->id);
             $cart = Session::get('cart');
             $items = $cart->items;
+
+            // To return array of keys from items array.
             $products_id = array_keys($items);
 
+            // To save each product in database.
             foreach ($products_id as $product) {
-                $order_product = array(
-                    new Order_product(array(
-                        'order_id' => $order->id,
-                        'product_id' => $product,
-                        'qty' => $items[$product]['qty'],
-                        'price' => $items[$product]['price']
-                    )),
-                );
-                $latestOrder->order_product()->saveMany($order_product);
+                $order_product = new Order_product();
+                $order_product->order_id = $order->id;
+                $order_product->product_id = $product;
+                $order_product->qty = $items[$product]['qty'];
+                $order_product->price = $items[$product]['price'];
+
+                $order_product->save();
             }
 
-            $order_detail = array(
-                new Order_detail(array(
-                    'order_id' => $order->id,
-                    'street' => $request->street,
-                    'postalcode' => $request->postalcode,
-                    'city' => $request->city,
-                    'country' => $request->country,
-                    'totalPrice' => $cart->totalPrice,
-                    'payment' => false
-                ))
-            );
-            $latestOrder->order_detail()->saveMany($order_detail);
+            $order_detail = new Order_detail();
+            $order_detail->order_id = $order->id;
+            $order_detail->street = $request->street;
+            $order_detail->postalcode = $request->postalcode;
+            $order_detail->city = $request->city;
+            $order_detail->country = $request->country;
+            $order_detail->totalPrice = $cart->totalPrice;
+            $order_detail->payment = false;
+            $order_detail->save();
 
             Session::forget('cart');
             return redirect()->route('product.index');

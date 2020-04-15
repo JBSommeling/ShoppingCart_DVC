@@ -62,9 +62,9 @@ class UserController extends Controller
 
         // To delete every record in related tables.
         foreach ($user->orders as $order){
-            $user->orders()->first()->order_detail()->delete();
-            $user->orders()->first()->order_product()->delete();
-            $user->orders()->first()->delete();
+            $order->order_detail()->delete();
+            $order->order_product()->delete();
+            $order->delete();
         }
 
         Session::forget('cart');

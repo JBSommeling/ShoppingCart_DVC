@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
     // To allow mass assignment.
-    protected $fillable = ['order_id'];
+    protected $fillable = ['order_id', 'user_id'];
 
     /**
      * Method to define relationship between order and users table.
@@ -27,9 +28,9 @@ class Order extends Model
 
     /**
      * Method to define relationship between order and order_product table.
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function order_product(){
-        return $this->hasOne('App\Order_product');
+        return $this->hasMany('App\Order_product');
     }
 }
