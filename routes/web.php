@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Routes for Admin namespace.
+ */
 Route::namespace('Admin')->prefix('admin')->middleware('can:isAdmin')->name('admin.')->group(function (){
-
     Route::namespace('User')->prefix('user')->name('user.')->group(function (){
         Route::get('/', 'UserController@index')->name('index');
         Route::post('/role', 'UserController@storeRole')->name('role');
@@ -22,6 +24,9 @@ Route::namespace('Admin')->prefix('admin')->middleware('can:isAdmin')->name('adm
     });
 });
 
+/**
+ * Routes for order, cart and product pages.
+ */
 Route::name('product.')->group(function(){
     Route::get('/', 'ProductController@index')->name('index');
     Route::get('/products/{filter}', 'ProductController@filter')->name('filter');
@@ -34,13 +39,17 @@ Route::name('product.')->group(function(){
             Route::post('/pay', 'OrderController@store')->name('cart.pay');
         });
     });
-
-
     Route::prefix('product')->group(function (){
         Route::get('/{id}', 'ProductController@show')->name('show');
         Route::post('/addToCart', 'ProductController@addToCart')->name('addToCart');
     });
 });
+
+Route::namespace('Order')->prefix('order')->name('order.')->middleware('auth')->group(function (){
+    Route::get('/', 'OrderController@show')->name('index');
+});
+
+
 
 Auth::routes();
 

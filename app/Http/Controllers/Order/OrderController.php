@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
+    public function index(){
+
+    }
+
     /**
      * Method to render shop.checkout view with POST form, if authenticated.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -38,7 +42,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Method to store given values to database, if validated
+     * Method to store given values to database, if validated. Used Eloquent for database queries.
      * @param Request $request  - contains post information from form.
      * @return \Illuminate\Http\RedirectResponse
      */

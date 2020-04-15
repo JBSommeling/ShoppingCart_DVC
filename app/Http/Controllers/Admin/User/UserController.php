@@ -53,6 +53,7 @@ class UserController extends Controller
 
     /**
      * Method to delete user and all its records in order, order_detail and order_product tables.
+     * Used Eloquent for database queries.
      * @param $user_id - the id of the user to be deleted.
      * @return \Illuminate\Http\RedirectResponse
      */
