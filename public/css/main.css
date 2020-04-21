@@ -189,3 +189,12 @@ body {
   margin-bottom: 5px;
 }
 
+.orderHeading {
+  height: 5rem;
+}
+
+.orderHeading p {
+  float: right;
+  transform: translateY(-2rem);
+}
+

@@ -45,8 +45,17 @@ Route::name('product.')->group(function(){
     });
 });
 
+/**
+ * Routes for order pages.
+ */
+
 Route::namespace('Order')->prefix('order')->name('order.')->middleware('auth')->group(function (){
-    Route::get('/', 'OrderController@show')->name('show');
+    Route::get('/show', 'OrderController@show')->name('show');
+    Route::middleware('can:isAdmin')->prefix('admin')->name('admin.')->group(function(){
+        Route::get('/', 'OrderController@index')->name('index');
+        Route::post('/update/{order_detail_id}/', 'OrderDetailController@update')->name('update');
+    });
+
 });
 
 

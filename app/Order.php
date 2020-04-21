@@ -15,7 +15,7 @@ class Order extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function user(){
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     /**

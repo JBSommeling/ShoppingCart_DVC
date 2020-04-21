@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\Order_detail;
 use App\Order_product;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -17,6 +16,16 @@ class OrderController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Method to show all pending orders in pendingOrders page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function index(){
+        $orders = Order::all();
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**

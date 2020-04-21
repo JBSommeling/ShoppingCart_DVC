@@ -1,0 +1,7 @@
+.orderHeading {
+    height: 5rem;
+    & p {
+        float: right;
+        transform: translateY(-2rem);
+    }
+}
