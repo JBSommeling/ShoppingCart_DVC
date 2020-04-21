@@ -139,4 +139,52 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#filterPaymentDoneBtn").click(function(e){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        e.preventDefault();
+        $.ajax({
+            url: '/order/admin/index/done' ,
+            data:{_token: CSRF_TOKEN},
+            type:'POST',
+            success: function(data){
+                $("#orderContent").html(data);
+            },
+            error: function (data) {
+                alert('error');
+            }
+        });
+    });
+
+    $("#filterPaymentPendingBtn").click(function(e){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        e.preventDefault();
+        $.ajax({
+            url: '/order/admin/index/pending' ,
+            data:{_token: CSRF_TOKEN},
+            type:'POST',
+            success: function(data){
+                $("#orderContent").html(data);
+            },
+            error: function (data) {
+                alert('error');
+            }
+        });
+    });
+
+    $("#filterPaymentNoneBtn").click(function(e){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        e.preventDefault();
+        $.ajax({
+            url: '/order/admin/index/none' ,
+            data:{_token: CSRF_TOKEN},
+            type:'POST',
+            success: function(data){
+                $("#orderContent").html(data);
+            },
+            error: function (data) {
+                alert('error');
+            }
+        });
+    });
 });

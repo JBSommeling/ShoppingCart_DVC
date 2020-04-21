@@ -20,12 +20,19 @@ class OrderController extends Controller
 
     /**
      * Method to show all pending orders in pendingOrders page
+     * @param $filter - the filter to be executed.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function index(){
+    public function index($filter){
         $orders = Order::all();
-        return view('admin.orders.index', compact('orders'));
+
+        if ($filter == 'all') {
+            return view('admin.orders.index', compact('orders'));
+        }
+        else {
+            return view('admin.orders.filter', compact('orders', 'filter'));
+        }
     }
 
     /**

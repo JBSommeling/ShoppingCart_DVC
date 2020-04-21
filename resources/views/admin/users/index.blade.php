@@ -40,13 +40,13 @@
                                             @endif
                                         </td>
                                         <td>
-{{--                                            @if($user->name != $authUser)--}}
+                                            @if($user->name != $authUser)
                                             <form action=" {{ route('admin.user.delete', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger">Verwijderen</button>
                                             </form>
-{{--                                            @endif--}}
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

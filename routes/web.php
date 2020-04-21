@@ -52,7 +52,8 @@ Route::name('product.')->group(function(){
 Route::namespace('Order')->prefix('order')->name('order.')->middleware('auth')->group(function (){
     Route::get('/show', 'OrderController@show')->name('show');
     Route::middleware('can:isAdmin')->prefix('admin')->name('admin.')->group(function(){
-        Route::get('/', 'OrderController@index')->name('index');
+        Route::get('/index/{filter}', 'OrderController@index')->name('index');
+        Route::POST('/index/{filter}', 'OrderController@index')->name('index');
         Route::post('/update/{order_detail_id}/', 'OrderDetailController@update')->name('update');
     });
 

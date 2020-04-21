@@ -20,6 +20,9 @@ class OrderDetailController extends Controller
         $order_detail->payment = true;
         $order_detail->save();
 
-        return redirect()->route('order.admin.index');
+        $filter = 'all';
+
+        return redirect()->route('order.admin.index', $filter);
     }
+
 }

@@ -23,9 +23,11 @@
                                         <div class="card-body">
                                             <ul>
                                                 @foreach($order->order_product as $order_product)
-                                                    <li><a href=" {{ route('product.show', $order_product->product_id) }}">{{ $order_product->product->title }}</a></li>
+                                                    <li><a href=" {{ route('product.show', $order_product->product_id) }}">{{ $order_product->product->title }}</a> {{ $order_product->qty }} stuks van {{$order_product->product->price}} euro.</li>
                                                 @endforeach
                                             </ul>
+                                            <hr>
+                                            <p>Totaalbedrag: <strong>{{ $order->order_detail->totalPrice }} euro </strong></p>
                                             <p>
                                                 <span><strong>Adres:</strong></span>
                                                 {{$order->order_detail->street}}

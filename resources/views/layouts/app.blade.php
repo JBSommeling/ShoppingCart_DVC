@@ -70,7 +70,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @can('isAdmin')
                                         <a class="dropdown-item" href="{{ route('admin.user.index') }}">Gebruikers</a>
-                                        <a class="dropdown-item" href=" {{ route('order.admin.index') }} ">Factureringen</a>
+                                        <a class="dropdown-item" href=" {{ route('order.admin.index', 'all') }} ">Factureringen</a>
                                     @endcan
                                     <a href="{{ route('order.show') }}" class="dropdown-item">Mijn bestellingen</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

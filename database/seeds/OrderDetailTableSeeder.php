@@ -20,7 +20,7 @@ class OrderDetailTableSeeder extends Seeder
             'postalcode' => '3312 KW',
             'city' => 'Dordrecht',
             'country' => 'Netherlands',
-            'totalPrice' => 20,
+            'totalPrice' => 24,
             'payment' => true
         ]);
 
@@ -30,7 +30,7 @@ class OrderDetailTableSeeder extends Seeder
             'postalcode' => '3312 KW',
             'city' => 'Dordrecht',
             'country' => 'Netherlands',
-            'totalPrice' => 35,
+            'totalPrice' => 24,
             'payment' => false
         ]);
     }
