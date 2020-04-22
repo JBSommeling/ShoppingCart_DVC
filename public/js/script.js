@@ -140,6 +140,10 @@ $(document).ready(function () {
         });
     });
 
+    /**
+     * Function to filter payments by done
+     */
+
     $("#filterPaymentDoneBtn").click(function(e){
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         e.preventDefault();
@@ -155,6 +159,10 @@ $(document).ready(function () {
             }
         });
     });
+
+    /**
+     * Function to filter payments by pending
+     */
 
     $("#filterPaymentPendingBtn").click(function(e){
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -172,6 +180,9 @@ $(document).ready(function () {
         });
     });
 
+    /**
+     * Function to show all payments
+     */
     $("#filterPaymentNoneBtn").click(function(e){
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         e.preventDefault();
