@@ -59,8 +59,4 @@ Route::namespace('Order')->prefix('order')->name('order.')->middleware('auth')->
 
 });
 
-
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
