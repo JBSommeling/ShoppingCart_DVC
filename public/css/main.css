@@ -1,5 +1,6 @@
 body {
   background-color: #f7f5f7;
+  overflow-x: hidden;
 }
 
 .wrapper {
@@ -142,6 +143,7 @@ body {
 .product--img-top {
   width: 150px;
   height: 216px;
+  margin: auto;
 }
 
 .product--title {
@@ -158,6 +160,7 @@ body {
 
 .product__detail--img-top {
   max-width: 300px;
+  margin: auto;
 }
 
 .product__detail--title {
