@@ -27,14 +27,14 @@
                                                 @endforeach
                                             </ul>
                                             <hr>
-                                            <p>Totaalbedrag: <strong>{{ $order->order_detail->totalPrice }} euro </strong></p>
+                                            <p>Totaalbedrag: <strong>{{ $order->order_detail['totalPrice'] }} euro </strong></p>
                                             <p>
                                                 <span><strong>Adres:</strong></span>
-                                                {{$order->order_detail->street}}
-                                                {{$order->order_detail->postalcode}}
-                                                {{$order->order_detail->city}}
+                                                {{$order->order_detail['street']}}
+                                                {{$order->order_detail['postalcode']}}
+                                                {{$order->order_detail['city']}}
                                             </p>
-                                            <p>Betaling: <i>@if($order->order_detail->payment === 1) voldaan @else niet voldaan @endif</i></p>
+                                            <p>Betaling: <i>@if($order->order_detail['payment'] === 1) voldaan @else niet voldaan @endif</i></p>
 
                                         </div>
                                     </div>

@@ -119,8 +119,8 @@ class OrderController extends Controller
                 $order_product = new Order_product();
                 $order_product->order_id = $order->id;
                 $order_product->product_id = $product;
-                $order_product->qty = $items[$product]['qty'];
-                $order_product->price = $items[$product]['price'];
+                $order_product->qty = $items[$product]->qty;
+                $order_product->price = $items[$product]->price;
 
                 $order_product->save();
             }
