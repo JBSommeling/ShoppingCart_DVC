@@ -75,7 +75,7 @@ class Cart
             $this->addToSession();
         }
         else {
-            $this->removeFromCart($product_id);
+            $this->remove($product_id);
         }
     }
 
@@ -83,7 +83,7 @@ class Cart
      * Method to remove product from Cart
      * @param $product_id - the id of the product
      */
-    public function removeFromCart($product_id){
+    public function remove($product_id){
         unset($this->items[$product_id]);
     }
 
