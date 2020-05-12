@@ -76,6 +76,7 @@ class Cart
         }
         else {
             $this->remove($product_id);
+            $this->addToSession();
         }
     }
 
