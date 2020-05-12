@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
-use App\Order;
-use App\Order_detail;
-use App\Order_product;
+use App\Order\Order;
+use App\Order\Order_detail;
+use App\Order\Order_product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;

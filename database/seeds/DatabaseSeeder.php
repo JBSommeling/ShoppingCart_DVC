@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Order_detail;
+use App\Order\Order_detail;
+use App\Order\Order;
+use App\Order\Order_product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,9 +28,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(OrderProductsTableSeeder::class);
 
-        factory(\App\Order::class, 10)->create()->each(function ($order) {
+        factory(Order::class, 10)->create()->each(function ($order) {
             factory(Order_detail::class, 1)->create(['order_id' => $order->id]);
-            factory(\App\Order_product::class, 3)->create(['order_id' => $order->id]);
+            factory(Order_product::class, 3)->create(['order_id' => $order->id]);
         });
     }
 }

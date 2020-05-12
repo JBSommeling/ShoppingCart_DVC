@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
+use App\Cart\Cart;
 use Illuminate\Http\Request;
-use App\Category;
-use App\Product;
+use App\Product\Category;
+use App\Product\Product;
 
 class ProductController extends Controller
 {
@@ -101,6 +101,9 @@ class ProductController extends Controller
         $cart = new Cart();
 
         $product = Product::find($request->product_id);
+//        if ($product == null) {
+//            redirect(400);
+//        }
 
         $cart->editAmount($product, $product->id, $request->amount);
         return redirect()->route('product.cart');

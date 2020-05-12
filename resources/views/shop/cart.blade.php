@@ -13,8 +13,7 @@
                                         <div class="card-header" id="product_{{ $productNr }}">
                                             <h2 class="mb-0">
                                                 <button class="btn" type="button" data-toggle="collapse" data-target="#collapse_{{ $productNr }}" aria-expanded="true" aria-controls="collapseOne">
-                                                    <span class="badge badge-secondary"> {{ $product['qty'] }} </span>
-                                                    <strong> {{ $product['product']['title'] }} </strong>
+                                                    <span class="badge badge-secondary"> {{ $product->qty }} </span> <strong> {{ $product->product['title'] }} </strong>
                                                 </button>
                                                 <form action="{{ route('product.cart.edit') }}" method="POST" class="d-inline-block float-right">
                                                     @csrf
@@ -22,8 +21,7 @@
                                                     <input type="hidden" name="product_id" id="product_id" value="{{$key}}">
                                                     <input type="submit" class="btn btn-danger d-inline-block ml-4 cart--remove" value="&times;">
                                                 </form>
-                                                <p class="cart--price d-inline-block float-right"><i>Prijs: </i><span class="badge badge-success"> {{ $product['price'] }}</span></p>
-
+                                                <p class="cart--price d-inline-block float-right"><i>Prijs: </i><span class="badge badge-success"> {{ $product->price }}</span></p>
                                             </h2>
                                         </div>
 
@@ -33,7 +31,7 @@
                                                 @csrf
                                                     <label for="amount">Wijzig aantal: </label>
                                                     <input type="hidden" name="product_id" id="product_id" value="{{$key}}">
-                                                    <input type="number" name="amount" id="amount" min="0" value="{{ $product['qty'] }}" class="form-control col-2 d-inline-block">
+                                                    <input type="number" name="amount" id="amount" min="0" value="{{ $product->qty }}" class="form-control col-2 d-inline-block">
                                                     <input type="submit" value="Bevestigen" class="d-inline-block btn btn-success cart__form--changeAmountBtn">
                                                 </form>
                                             </div>

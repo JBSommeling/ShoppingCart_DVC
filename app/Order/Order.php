@@ -1,9 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Order;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -12,7 +11,7 @@ class Order extends Model
 
     /**
      * Method to define relationship between order and users table.
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
     public function user(){
         return $this->belongsTo('App\User');
@@ -23,7 +22,7 @@ class Order extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function order_detail(){
-        return $this->hasOne('App\Order_detail');
+        return $this->hasOne('App\Order\Order_detail');
     }
 
     /**
@@ -31,6 +30,6 @@ class Order extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function order_product(){
-        return $this->hasMany('App\Order_product');
+        return $this->hasMany('App\Order\Order_product');
     }
 }

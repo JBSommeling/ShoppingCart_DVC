@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Cart;
 
 use Illuminate\Support\Facades\Session;
 
-class Cart
+class Cart implements iCart
 {
     public $items = null;
     public $totalQty = 0;
@@ -27,7 +27,8 @@ class Cart
      * @param $product_id - id of product to be sent into cart.
      */
     public function add($product, $product_id, $amount) {
-        $storedItem = ['qty' => 0, 'price' => $product->price, 'product' => $product];
+        //$storedItem = ['qty' => 0, 'price' => $product->price, 'product' => $product];
+        $storedItem = new StoredItem($product->price, $product);
         //To check if items are present in Cart and something else than null.
         if ($this->items) {
             /*to check by id, if item is already present in Cart (items array), then $storedItem must be overwritten by
@@ -37,8 +38,8 @@ class Cart
             }
         }
 
-        $storedItem['qty'] += $amount;
-        $storedItem['price'] = $product->price * $storedItem['qty'];
+        $storedItem->qty += $amount;
+        $storedItem->price = $product->price * $storedItem->qty;
         //To overwrite old values in items array
         $this->items[$product_id] = $storedItem;
 
@@ -57,21 +58,21 @@ class Cart
         $storedItem = $this->items[$product_id];
 
         // To remove old quantity from totalQty property
-        $this->totalQty -= $storedItem['qty'];
+        $this->totalQty -= $storedItem->qty;
 
         // To remove old price from totalPrice property.
-        $this->totalPrice -= $storedItem['price'];
+        $this->totalPrice -= $storedItem->price;
 
         if ($newAmount > 0) {
             // To assign new values to storedItem.
-            $storedItem['qty'] = $newAmount;
-            $storedItem['price'] = $product->price * $storedItem['qty'];
+            $storedItem->qty = $newAmount;
+            $storedItem->price = $product->price * $storedItem->qty;
 
             //To overwrite old values in items array
             $this->items[$product_id] = $storedItem;
 
-            $this->totalQty += $storedItem['qty'];
-            $this->totalPrice += $storedItem['price'];
+            $this->totalQty += $storedItem->qty;
+            $this->totalPrice += $storedItem->price;
             $this->addToSession();
         }
         else {
