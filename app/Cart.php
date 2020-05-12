@@ -2,14 +2,17 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Session;
+
 class Cart
 {
     public $items = null;
     public $totalQty = 0;
     public $totalPrice = 0;
 
-    public function __construct($oldCart)
+    public function __construct()
     {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
         //To check if oldCart is present and different than null
         if ($oldCart) {
             $this->items = $oldCart->items;
@@ -36,11 +39,12 @@ class Cart
 
         $storedItem['qty'] += $amount;
         $storedItem['price'] = $product->price * $storedItem['qty'];
-
         //To overwrite old values in items array
         $this->items[$product_id] = $storedItem;
+
         $this->totalQty += $amount;
-        $this->totalPrice += $product['price'];
+        $this->totalPrice += $product['price'] * $amount;
+        $this->addToSession();
     }
 
     /**
@@ -68,9 +72,25 @@ class Cart
 
             $this->totalQty += $storedItem['qty'];
             $this->totalPrice += $storedItem['price'];
+            $this->addToSession();
         }
         else {
-            unset($this->items[$product_id]);
+            $this->removeFromCart($product_id);
         }
+    }
+
+    /**
+     * Method to remove product from Cart
+     * @param $product_id - the id of the product
+     */
+    public function removeFromCart($product_id){
+        unset($this->items[$product_id]);
+    }
+
+    /**
+     * Method to add cart to session.
+     */
+    public function addToSession(){
+        Session::put('cart', $this);
     }
 }

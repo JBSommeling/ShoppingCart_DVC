@@ -73,11 +73,9 @@ class ProductController extends Controller
 
     public function addToCart(Request $request){
         $product = Product::find($request->product_id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
+        $cart = new Cart();
         $cart->add($product, $product->id, $request->amount);
 
-        Session::put('cart', $cart);
         return redirect()->route('product.index');
     }
 
@@ -87,8 +85,7 @@ class ProductController extends Controller
      */
 
     public function showCart(){
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
+        $cart = new Cart();
 
         $productNr = 1;
         $products = $cart->items;
@@ -103,14 +100,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function editCart(Request $request){
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
+        $cart = new Cart();
 
         $product = Product::find($request->product_id);
 
         $cart->editAmount($product, $product->id, $request->amount);
-
-        Session::put('cart', $cart);
         return redirect()->route('product.cart');
     }
 }
