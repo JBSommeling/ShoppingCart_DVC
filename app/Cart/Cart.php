@@ -10,9 +10,9 @@ class Cart implements iCart
     public $totalQty = 0;
     public $totalPrice = 0;
 
-    public function __construct()
+    public function __construct($sessionName = 'cart')
     {
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $oldCart = Session::has($sessionName) ? Session::get($sessionName) : null;
         //To check if oldCart is present and different than null
         if ($oldCart) {
             $this->items = $oldCart->items;
@@ -26,7 +26,7 @@ class Cart implements iCart
      * @param $product - product to be sent into cart.
      * @param $product_id - id of product to be sent into cart.
      */
-    public function add($product, $product_id, $amount, $session = 'cart') {
+    public function add($product, $product_id, $amount, $sessionName = 'cart') {
         $storedItem = new StoredItem($product->price, $product);
         //To check if items are present in Cart and something else than null.
         if ($this->items) {
@@ -44,7 +44,7 @@ class Cart implements iCart
 
         $this->totalQty += $amount;
         $this->totalPrice += $product->price * $amount;
-        $this->addToSession($session);
+        $this->addToSession($sessionName);
     }
 
     /**
@@ -53,7 +53,7 @@ class Cart implements iCart
      * @param $product_id - the id of the product of the amount that needs to be edited.
      * @param $newAmount - the new amount of the product that needs to be edited.
      */
-    public function editAmount($product, $product_id, $newAmount, $session = 'cart'){
+    public function editAmount($product, $product_id, $newAmount, $sessionName = 'cart'){
         $storedItem = $this->items[$product_id];
 
         // To remove old quantity from totalQty property
@@ -72,11 +72,11 @@ class Cart implements iCart
 
             $this->totalQty += $storedItem->qty;
             $this->totalPrice += $storedItem->price;
-            $this->addToSession($session);
+            $this->addToSession($sessionName);
         }
         else {
             $this->removeProduct($product_id);
-            $this->addToSession($session);
+            $this->addToSession($sessionName);
         }
     }
 
@@ -91,15 +91,15 @@ class Cart implements iCart
     /**
      * Method to remove cart from Session and content is removed.
      */
-    public function removeCartContent(){
-        Session::forget('cart');
+    public function removeCartContent($sessionName = 'cart'){
+        Session::forget($sessionName);
     }
 
     /**
      * Method to add cart to session.
      */
-    public function addToSession($session){
-        Session::put($session, $this);
+    public function addToSession($sessionName){
+        Session::put($sessionName, $this);
     }
 
 
