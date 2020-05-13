@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Order;
 
+use App\Cart\Cart;
 use App\Http\Controllers\Controller;
 use App\Order\Order;
 use App\Order\Order_detail;
@@ -26,6 +27,9 @@ class OrderController extends Controller
 
     public function index($filter){
         $orders = Order::all();
+        if ($orders == null){
+            return abort(404);
+        }
 
         if ($filter == 'all') {
             return view('admin.orders.index', compact('orders'));
@@ -65,9 +69,9 @@ class OrderController extends Controller
             'card-expiry-year' => 'Jaar',
             'card-cvc' => 'CVC'
         ];
-
+        $cart = new Cart();
+        $total = $cart->totalPrice;
         $user = Auth::user();
-        $total = Session::get('cart')->totalPrice;
         return view('shop.checkout', compact('user', 'total', 'fields'));
     }
 
@@ -108,7 +112,7 @@ class OrderController extends Controller
             $order->user_id = Auth::user()->id;
             $order->save();
 
-            $cart = Session::get('cart');
+            $cart = new Cart();
             $items = $cart->items;
 
             // To return array of keys from items array.
@@ -135,7 +139,7 @@ class OrderController extends Controller
             $order_detail->payment = false;
             $order_detail->save();
 
-            Session::forget('cart');
+            $cart->removeCartContent();
             return redirect()->route('product.index');
         }
     }

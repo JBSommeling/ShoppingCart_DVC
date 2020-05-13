@@ -17,6 +17,9 @@ class OrderDetailController extends Controller
 
     public function update($order_detail_id){
         $order_detail = Order_detail::find($order_detail_id);
+        if ($order_detail == null) {
+            return abort(404);
+        }
         $order_detail->payment = true;
         $order_detail->save();
 

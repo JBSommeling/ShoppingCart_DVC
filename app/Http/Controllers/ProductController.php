@@ -15,6 +15,13 @@ class ProductController extends Controller
     public function index(){
         $categories = Category::all();
         $products = Product::all();
+
+        if ($products == null) {
+            return abort(404);
+        }
+        if ($categories == null) {
+            return abort(404);
+        }
         return view('shop.index', compact('categories', 'products'));
     }
 
@@ -26,6 +33,13 @@ class ProductController extends Controller
     public function show($product_id){
         $product = Product::find($product_id);
         $categories = Category::all();
+
+        if ($product == null) {
+            return abort(404);
+        }
+        if ($categories == null) {
+            return abort(404);
+        }
         return view('shop.product', compact('categories', 'product'));
     }
 
@@ -71,6 +85,9 @@ class ProductController extends Controller
 
     public function addToCart(Request $request){
         $product = Product::find($request->product_id);
+        if ($product == null) {
+            return abort(404);
+        }
         $cart = new Cart();
         $cart->add($product, $product->id, $request->amount);
 
@@ -101,9 +118,9 @@ class ProductController extends Controller
         $cart = new Cart();
 
         $product = Product::find($request->product_id);
-//        if ($product == null) {
-//            redirect(400);
-//        }
+        if ($product == null) {
+            return abort(404);
+        }
 
         $cart->editAmount($product, $product->id, $request->amount);
         return redirect()->route('product.cart');

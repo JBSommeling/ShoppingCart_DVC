@@ -19,6 +19,12 @@ class UserController extends Controller
 
     public function index(){
         $users = User::all();
+
+        if ($users == null) {
+            return abort(404);
+        }
+
+
         $authUser = Auth::user()->name;
         return view('admin.users.index', compact('users', 'authUser'));
     }
@@ -59,6 +65,10 @@ class UserController extends Controller
      */
     public function destroy($user_id){
         $user = User::find($user_id);
+        if ($user == null) {
+            return abort(404);
+        }
+
 
         // To delete every record in related tables.
         foreach ($user->orders as $order){

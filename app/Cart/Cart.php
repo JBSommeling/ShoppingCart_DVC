@@ -76,7 +76,7 @@ class Cart implements iCart
             $this->addToSession();
         }
         else {
-            $this->remove($product_id);
+            $this->removeProduct($product_id);
             $this->addToSession();
         }
     }
@@ -85,8 +85,15 @@ class Cart implements iCart
      * Method to remove product from Cart
      * @param $product_id - the id of the product
      */
-    public function remove($product_id){
+    public function removeProduct($product_id){
         unset($this->items[$product_id]);
+    }
+
+    /**
+     * Method to remove cart from Session and content is removed.
+     */
+    public function removeCartContent(){
+        Session::forget('cart');
     }
 
     /**
@@ -95,4 +102,6 @@ class Cart implements iCart
     public function addToSession(){
         Session::put('cart', $this);
     }
+
+
 }
