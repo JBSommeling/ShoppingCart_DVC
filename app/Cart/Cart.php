@@ -26,8 +26,7 @@ class Cart implements iCart
      * @param $product - product to be sent into cart.
      * @param $product_id - id of product to be sent into cart.
      */
-    public function add($product, $product_id, $amount) {
-        //$storedItem = ['qty' => 0, 'price' => $product->price, 'product' => $product];
+    public function add($product, $product_id, $amount, $session = 'cart') {
         $storedItem = new StoredItem($product->price, $product);
         //To check if items are present in Cart and something else than null.
         if ($this->items) {
@@ -44,8 +43,8 @@ class Cart implements iCart
         $this->items[$product_id] = $storedItem;
 
         $this->totalQty += $amount;
-        $this->totalPrice += $product['price'] * $amount;
-        $this->addToSession();
+        $this->totalPrice += $product->price * $amount;
+        $this->addToSession($session);
     }
 
     /**
@@ -54,7 +53,7 @@ class Cart implements iCart
      * @param $product_id - the id of the product of the amount that needs to be edited.
      * @param $newAmount - the new amount of the product that needs to be edited.
      */
-    public function editAmount($product, $product_id, $newAmount){
+    public function editAmount($product, $product_id, $newAmount, $session = 'cart'){
         $storedItem = $this->items[$product_id];
 
         // To remove old quantity from totalQty property
@@ -73,11 +72,11 @@ class Cart implements iCart
 
             $this->totalQty += $storedItem->qty;
             $this->totalPrice += $storedItem->price;
-            $this->addToSession();
+            $this->addToSession($session);
         }
         else {
             $this->removeProduct($product_id);
-            $this->addToSession();
+            $this->addToSession($session);
         }
     }
 
@@ -99,8 +98,8 @@ class Cart implements iCart
     /**
      * Method to add cart to session.
      */
-    public function addToSession(){
-        Session::put('cart', $this);
+    public function addToSession($session){
+        Session::put($session, $this);
     }
 
 
