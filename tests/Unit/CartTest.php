@@ -3,7 +3,6 @@
 
 namespace Tests\Unit;
 
-use App\Cart\iCart;
 use Illuminate\Support\Facades\Session;
 use Tests\TestCase;
 use App\Cart\Cart;
